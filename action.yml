@@ -1,0 +1,10 @@
+name: PURLs Submission Action
+description: "Submit some PURLs to the Dependency Submission API"
+inputs:
+  purls:
+    description: "The PURLs to submit, one per line"
+    required: true
+    default: "."
+runs:
+  using: "node16"
+  main: "main.js"
