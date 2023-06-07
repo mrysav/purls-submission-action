@@ -1,6 +1,10 @@
 name: PURLs Submission Action
 description: "Submit some PURLs to the Dependency Submission API"
 inputs:
+  token:
+    description: "GitHub Personal Access Token (PAT). Defaults to PAT provided by Actions runner."
+    required: false
+    default: ${{ github.token }}
   purls:
     description: "The PURLs to submit, one per line"
     required: true
