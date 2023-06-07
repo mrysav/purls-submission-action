@@ -4,7 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "package": "ncc build index.js -o dist --source-map"
   },
   "author": "",
   "license": "ISC",
@@ -12,5 +13,8 @@
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "@github/dependency-submission-toolkit": "^1.2.10"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.36.1"
   }
 }
