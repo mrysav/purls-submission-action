@@ -20409,7 +20409,7 @@ async function run() {
     },
     _actions_github__WEBPACK_IMPORTED_MODULE_1__.context,
     {
-      correlator: _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.job,
+      correlator: `${_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.workflow}/${_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.job}`,
       id: _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.runId.toString(),
     }
   );

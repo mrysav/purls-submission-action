@@ -16,7 +16,7 @@ async function run() {
     },
     github.context,
     {
-      correlator: github.context.job,
+      correlator: `${github.context.workflow}/${github.context.job}`,
       id: github.context.runId.toString(),
     }
   );
