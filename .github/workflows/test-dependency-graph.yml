@@ -8,7 +8,7 @@ on:
 
 jobs:
   test-dep-graph-features:
-    name: Test Dependency Submission
+    name: Test Dependency Graph Features
 
     runs-on: ubuntu-22.04
 
@@ -19,13 +19,10 @@ jobs:
       - name: Run PURL Submission Action
         uses: ./purl-submission-action
         with:
-          purls: |
+          purls: |-
             pkg:gem/ruby-advisory-db-check@0.12.4
             pkg:maven/org.apache.xmlgraphics/batik-anim@1.9.1
+            pkg:maven/org.apache.log4j/log4j@1.0.4
 
       - name: Run Dependency Review
         uses: ./dependency-review-action
-        with:
-          purls: |
-            pkg:gem/ruby-advisory-db-check@0.12.4
-            pkg:maven/org.apache.xmlgraphics/batik-anim@1.9.1
