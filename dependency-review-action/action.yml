@@ -1,0 +1,66 @@
+# Avoid using default values for options here since they will
+# end up overriding external configurations.
+name: 'Dependency Review'
+description: 'Prevent the introduction of dependencies with known vulnerabilities'
+author: 'GitHub'
+inputs:
+  repo-token:
+    description: Token for the repository. Can be passed in using `{{ secrets.GITHUB_TOKEN }}`.
+    required: false
+    default: ${{ github.token }}
+  fail-on-severity:
+    description: Don't block PRs below this severity. Possible values are `low`, `moderate`, `high`, `critical`.
+    required: false
+  fail-on-scopes:
+    description: Dependency scopes to block PRs on. Comma-separated list. Possible values are 'unknown', 'runtime', and 'development' (e.g. "runtime, development")
+    required: false
+  base-ref:
+    description: The base git ref to be used for this check. Has a default value when the workflow event is `pull_request` or `pull_request_target`. Must be provided otherwise.
+    required: false
+  head-ref:
+    description: The head git ref to be used for this check. Has a default value when the workflow event is `pull_request` or `pull_request_target`. Must be provided otherwise.
+    required: false
+  config-file:
+    description: A path to the configuration file for the action.
+    required: false
+  allow-licenses:
+    description: Comma-separated list of allowed licenses (e.g. "MIT, GPL 3.0, BSD 2 Clause")
+    required: false
+  deny-licenses:
+    description: Comma-separated list of forbidden licenses (e.g. "MIT, GPL 3.0, BSD 2 Clause")
+    required: false
+  allow-dependencies-licenses:
+    description: Comma-separated list of dependencies in purl format (e.g. "pkg:npm/express, pkg:pip/pycrypto"). These dependencies will be permitted to use any license, no matter what license policy is enforced otherwise.
+    required: false
+  allow-ghsas:
+    description: Comma-separated list of allowed GitHub Advisory IDs (e.g. "GHSA-abcd-1234-5679, GHSA-efgh-1234-5679")
+    required: false
+  external-repo-token:
+    description: A token for fetching external configuration file if it lives in another repository. It is required if the repository is private
+    required: false
+  license-check:
+    description: A boolean to determine if license checks should be performed
+    required: false
+  vulnerability-check:
+    description: A boolean to determine if vulnerability checks should be performed
+    required: false
+  comment-summary-in-pr:
+    description: Determines if the summary is posted as a comment in the PR itself. Setting this to `always` or `on-failure` requires you to give the workflow the write permissions for pull-requests
+    required: false
+  deny-packages:
+    description: A comma-separated list of package URLs to deny (e.g. "pkg:npm/express, pkg:pip/pycrypto")
+    required: false
+  deny-groups:
+    description: A comma-separated list of package URLs for group(s)/namespace(s) to deny (e.g. "pkg:npm/express, pkg:pip/pycrypto")
+    required: false
+  retry-on-snapshot-warnings:
+    description: Whether to retry on snapshot warnings
+    required: false
+    default: false
+  retry-on-snapshot-warnings-timeout:
+    description: Number of seconds to wait before stopping snapshot retries.
+    required: false
+    default: 120
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
